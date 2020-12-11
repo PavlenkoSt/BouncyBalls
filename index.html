@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Bouncing balls</title>
+  <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+  <audio src="music/Ramova & Elliot Callighan - Chassis.mp3" id="playsound__intro"></audio>
+  <div class="greetings">
+    <div class="greetings__window">
+      <div class="greetings__title">Welcome to best of the best game in the world!</div>
+      <div class="container__sides">
+        <div class="left__side">
+          <div class="player__img player__img--circle figure__move"></div>
+          <div class="player__name">Enter your name:
+            <input class="player__input" type="text" value="Player 1" autocomplete="off">
+          </div>
+          <div class="player__control">
+            <div class="control__up">
+              <div class="control__key">W</div>
+            </div>
+            <div class="control__down">
+              <div class="control__key">A</div>
+              <div class="control__key">S</div>
+              <div class="control__key">D</div>
+            </div>
+          </div>
+          <button class="player__btn" id="ready1">Ready</button>
+        </div>
+        <div class="right__side">
+          <div class="player__img player__img--square figure__move"></div>
+          <div class="player__name player__name--square">
+            Enter your name:
+            <input class="player__input" type="text" value="Player 2" autocomplete="off">
+          </div>
+          <div class="player__control">
+            <div class="control__up">
+              <div class="control__key">I</div>
+            </div>
+            <div class="control__down">
+              <div class="control__key">J</div>
+              <div class="control__key">K</div>
+              <div class="control__key">L</div>
+            </div>
+          </div>
+          <button class="player__btn" id="ready2">Ready</button>
+        </div>
+      </div>
+      <button class="start__btn" disabled>Start game</button>
+      <button class="volume__btn">
+        <img id="img__vol" src="img/images__vol/volumeOn.svg" alt="">
+      </button>
+    </div>
+    <!--/greetings__window-->
+  </div>
+  <!--/greetings-->
+
+
+  <div class="winner" id="#winner">
+    <div class="winner__window">
+      <div class="winneris">The winner is:</div>
+      <div class="winner__img figure__move"></div>
+      <div class="winner__name" id="winnerName">CLEAR!</div>
+      <div class="nicegame"></div>
+      <button class="winner__retry">one more time</button>
+    </div>
+  </div>
+
+  <h1>Fly Shary</h1>
+  <div id="square"></div>
+  <div id="circle"></div>
+  <canvas></canvas>
+
+  <audio src="music/Ramova & Elliot Callighan - Duct Tape, Take the Wheel.mp3" id="playSound"></audio>
+  <audio src="music/EatBall1.mp3" id="eatBall1"></audio>
+  <audio src="music/EatBall2.mp3" id="eatBall2"></audio>
+  <script src="script.js"></script>
+</body>
+
+</html>

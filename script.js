@@ -210,27 +210,11 @@ const evilSquare = new EvilSquare(
     true
 );
 
-
-
-
-
-
-
-
 function random(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function figuresMoves() {
-    let figures = document.querySelectorAll('.figure__move');
-    for (let i = 0; i < figures.length; i++) {
-        let figure = figures[i];
-        setInterval(function () {
-            figure.classList.toggle('move');
-        }, 800);
-    }
-}
-figuresMoves();
+//================================ listeners ==========================================
 
 function listenRetryBtn(){
     const retryBtn = document.querySelector('.winner__retry')
@@ -240,7 +224,6 @@ function listenRetryBtn(){
         location.reload();
     })
 }
-listenRetryBtn()
 
 function listenStartBtn(){
     startBtn.addEventListener('click', function (event) {
@@ -253,13 +236,30 @@ function listenStartBtn(){
         event.preventDefault();
     });
 }
-listenStartBtn()
 
 function listenReadyBtn(){
     readyOne.addEventListener('click', readyPlayer);
     readyTwo.addEventListener('click', readyPlayer);
 }
+
+listenRetryBtn()
+listenStartBtn()
 listenReadyBtn()
+
+//==================================================================================
+
+//================================ on start window =================================
+
+function figuresMoves() {
+    let figures = document.querySelectorAll('.figure__move');
+    for (let i = 0; i < figures.length; i++) {
+        let figure = figures[i];
+        setInterval(function () {
+            figure.classList.toggle('move');
+        }, 800);
+    }
+}
+figuresMoves();
 
 function readyPlayer(event) {
     this.classList.toggle('active');
@@ -299,12 +299,32 @@ function volumeBtnActivate(){
 }
 volumeBtnActivate()
 
+//====================================================================================
+//====================================== music =======================================
+
 function playMusic() {
     gameMusic.play();
     gameMusic.volume = 0.1;
     gameMusic.addEventListener('ended', function () {
         this.play();
     })
+}
+
+function eatBallSound(sound) {
+    sound.play();
+    sound.volume = 0.2;
+}
+
+//======================================================================================
+
+//================================ check winner and activate end window ================
+
+function showCounter(place, name, count) {
+    if (name === '') {
+        place.textContent = `${place === para__sq ? 'Square' : 'Circle'}: ${count} !`;
+    }else{
+        place.textContent = `${name}: ${count}!`;
+    }
 }
 
 function namePlayers() {
@@ -314,7 +334,6 @@ function namePlayers() {
         player2Name = playersNames[1].value;
     };
 };
-
 
 function checkPlayersWin() {
     whoWinner(score.scoreCount.square, player2Name, 'square');
@@ -344,10 +363,9 @@ function draw() {
     document.querySelector('.nicegame').textContent = 'nice game!!!';
 }
 
-function eatBallSound(sound) {
-    sound.play();
-    sound.volume = 0.2;
-}
+//=======================================================================================
+
+//================================ rendering and other ==================================
 
 function setControl() {
     window.onkeydown = function (e) {
@@ -370,14 +388,6 @@ function setControl() {
         } else if (event.keyCode === 75) {
             eS.y += eS.velY;
         }
-    }
-}
-
-function showCounter(place, name, count) {
-    if (name === '') {
-        place.textContent = `${place === para__sq ? 'Square' : 'Circle'}: ${count} !`;
-    }else{
-        place.textContent = `${name}: ${count}!`;
     }
 }
 
